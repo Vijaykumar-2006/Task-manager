@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #dde9ff 0%, #f0f5ff 100%);
+            min-height: 100vh;
+        }
+        .card {
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.14);
+            border: none;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(2px);
+        }
+        .form-control:focus {
+            border-color: #4f8cff;
+            box-shadow: 0 0 0 0.2rem rgba(79, 140, 255, .11);
+        }
+        .btn-success {
+            background: linear-gradient(90deg, #34d058 0%, #28a745 100%);
+            border: none;
+        }
+        .btn-outline-secondary, .btn-outline-secondary:focus {
+            background: #f4f8fa;
+        }
+        .register-icon {
+            font-size: 2.2rem;
+            color: #0077ff;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+        .card-title {
+            font-weight: 700;
+            color: #3867d6;
+            letter-spacing: 1px;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #3a3a3a;
+        }
+        .link-login {
+            margin-left: 0.5rem;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            .card {
+                box-shadow: none;
+                border-radius: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex align-items-center justify-content-center" style="min-height:90vh;">
+        <div class="card w-100" style="max-width: 410px;">
+            <div class="card-body p-4">
+                <h3 class="card-title mb-4 text-center">
+                    <i class="bi bi-person-plus register-icon"></i>Register
+                </h3>
+                <form method="post" autocomplete="off">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input id="username" name="username" class="form-control" required maxlength="32" placeholder="Enter username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input id="password" name="password" type="password" class="form-control" required minlength="4" placeholder="Enter password">
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <button class="btn btn-success px-4 shadow-sm" type="submit">
+                            <i class="bi bi-person-plus"></i> Register
+                        </button>
+                        <a class="btn btn-outline-secondary px-4" href="/login">
+                            <i class="bi bi-box-arrow-in-right"></i> Login
+                        </a>
+                    </div>
+                </form>
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    <div class="alert alert-warning mt-3">{{ messages[0] }}</div>
+                  {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
